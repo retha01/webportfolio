@@ -8,17 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="site.js" defer></script>
-<title>Projects · Your Name</title>
-<meta name="description" content="Projects by Your Name, with the problem each one solves and the tools used.">
+<title>Projects · Rethabile Ntsane</title>
+<meta name="description" content="Apps, UI/UX design and technical documentation by Rethabile Ntsane.">
 </head>
 <body>
 <header>
   <div class="wrap">
-    <a class="logo" href="index.html">&lt;Your Name /&gt;</a>
+    <a class="logo" href="index.html">Rethabile Ntsane</a>
     <nav aria-label="Main">
       <a href="index.html">About</a>
       <a href="projects.html" aria-current="page">Projects</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
     </nav>
   </div>
 </header>
@@ -35,27 +35,45 @@
     </div>
 
     <section id="panel-apps" role="tabpanel" aria-labelledby="pt-apps" data-panel="apps">
-
-      <!-- ===== PROJECT 1 (edit the text and the GitHub link) ===== -->
+      <article class="card">
+        <div class="card-head">
+          <h2>Gym Equipment Guide (React Native)</h2>
+          <a class="btn" href="https://github.com/retha01/YOUR-REPO" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+        <ul class="chips"><li>React Native</li><li>Expo</li><li>JavaScript</li></ul>
+        <h3>The problem</h3>
+        <p>Many people walk into a gym without knowing how to use certain equipment, which muscles or body parts it targets, or which workouts go best with it.</p>
+        <h3>Why these languages</h3>
+        <p>React Native with Expo lets me build one JavaScript codebase that runs on both iOS and Android, and test it quickly on a real phone. This was my first React Native project, and I wanted the practice to go towards solving a real problem.</p>
+        <h3>How it solves it</h3>
+        <p>The app gives people a quick way to look up a piece of equipment and see how it’s used, what it targets and which workouts pair well with it. <!-- EDIT: describe the actual screens and features --></p>
+      </article>
       <article class="card">
         <div class="card-head">
           <h2>Pet Booking System</h2>
-          <a class="btn" href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" rel="noopener">View on GitHub ↗</a>
+          <a class="btn" href="https://github.com/retha01/YOUR-REPO" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
         <ul class="chips"><li>C#</li><li>ASP.NET Core</li><li>SQL Server</li><li>React</li><li>JWT</li></ul>
-
         <h3>The problem</h3>
-        <p>Pet owners and pet-care providers often arrange bookings through scattered phone calls and messages, which leads to double bookings and no single record. They need one secure place where owners can create an account and manage their bookings.</p>
-
+        <p>Pet owners and pet-care providers often arrange bookings through scattered phone calls and messages, which leads to double bookings and no single record. They need one secure place to create an account and manage bookings.</p>
         <h3>Why these languages</h3>
-        <p>C# with ASP.NET Core gives a fast, strongly typed API with built-in support for JWT authentication. SQL Server suits the data well, because users, pets and bookings are related and need rules such as unique emails. React keeps the interface simple to build, with the sign-in, sign-up and signed-in views driven by one piece of state.</p>
-
+        <p>C# with ASP.NET Core gives a fast, strongly typed API with built-in support for JWT authentication. SQL Server suits the related data (users, pets, bookings) and enforces rules such as unique emails. React keeps the sign-in, sign-up and signed-in views simple to build.</p>
         <h3>How it solves it</h3>
-        <p>Users sign up and log in through a React front end. The C# API hashes passwords with bcrypt, checks them against SQL Server, and returns a short-lived JWT. Protected endpoints accept only requests with a valid token, which is the base the booking features are being built on.</p>
+        <p>Users sign up and log in through a React front end. The C# API hashes passwords with bcrypt, checks them against SQL Server and returns a short-lived JWT. Protected endpoints accept only requests with a valid token, which is the base the booking features are being built on.</p>
       </article>
-
-      <!-- ===== PROJECT 2: copy the whole <article> block above and paste it here ===== -->
-
+      <article class="card">
+        <div class="card-head">
+          <h2>Timeless Travels (University of Pretoria capstone)</h2>
+          <a class="btn" href="https://github.com/retha01/YOUR-REPO" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+        <ul class="chips"><li>C#</li><li>ASP.NET Core</li><li>SQL Server</li><li>Azure</li><li>Angular</li></ul>
+        <h3>The problem</h3>
+        <p>Travellers need one place to browse, book and manage trips, and the business needs reliable booking data behind it. <!-- EDIT: check this matches your capstone brief --></p>
+        <h3>Why these languages</h3>
+        <p>ASP.NET Core and C# for a structured REST API, SQL Server for a relational booking database (later moved to Azure SQL), and Angular for a responsive single-page front end.</p>
+        <h3>How it solves it</h3>
+        <p>The app lets users book trips through a web front end backed by REST APIs and a normalised database. It also includes an AI chatbot using machine-learning APIs, and the team deployed it through a GitHub Actions pipeline. <!-- EDIT: trim to what you want to show --></p>
+      </article>
     </section>
 
     <section id="panel-uiux" role="tabpanel" aria-labelledby="pt-uiux" data-panel="uiux" hidden>
@@ -75,11 +93,17 @@
       <p class="lead">Samples of the technical documentation I write. Select a preview to open the full document.</p>
       <div class="doc-grid" id="doc-grid"></div>
     </section>
-
   </div>
 </main>
 <footer>
-  <div class="wrap">© 2026 Your Name</div>
+  <div class="wrap footer-grid">
+    <p>© 2026 Rethabile Ntsane</p>
+    <ul class="footer-links">
+      <li><a href="mailto:rethabilentsane22@gmail.com">rethabilentsane22@gmail.com</a></li>
+      <li><a href="tel:+27836909013">083 690 9013</a></li>
+      <li><a href="https://github.com/retha01" target="_blank" rel="noopener">github.com/retha01</a></li>
+    </ul>
+  </div>
 </footer>
 </body>
 </html>

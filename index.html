@@ -8,42 +8,51 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="site.js" defer></script>
-<title>Your Name · Developer</title>
-<meta name="description" content="Portfolio of Your Name, a software developer.">
+<title>Rethabile Ntsane · Full-stack developer</title>
+<meta name="description" content="Portfolio of Rethabile Ntsane, a full-stack developer working with C#, ASP.NET Core, JavaScript and React.">
 </head>
 <body>
 <header>
   <div class="wrap">
-    <a class="logo" href="index.html">&lt;Your Name /&gt;</a>
+    <a class="logo" href="index.html">Rethabile Ntsane</a>
     <nav aria-label="Main">
       <a href="index.html" aria-current="page">About</a>
       <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
     </nav>
   </div>
 </header>
 <main>
   <div class="wrap">
-    <span class="label">Software developer</span>
-    <h1>Hi, I’m <em>Your Name</em>.</h1>
-    <p class="lead">I build web apps with C#, ASP.NET Core and React. <!-- EDIT: one sentence about you --></p>
-    <p><!-- EDIT: 2 or 3 sentences about your background, what you study or do, and what you enjoy building. --></p>
-    <div class="actions">
-      <a class="btn" href="projects.html">See my projects</a>
-      <a class="btn ghost" href="contact.html">Get in touch</a>
-    </div>
+    <section class="hero" aria-labelledby="about">
+      <div class="hero-text">
+        <span class="label" id="about">01 · About me</span>
+        <h1>Hi, I’m <em>Rethabile Ntsane</em>.</h1>
+        <p class="lead">I’m a 23-year-old full-stack developer who builds data-driven web and mobile apps with C#, ASP.NET Core and JavaScript.</p>
+        <p><strong>Where I studied.</strong> I completed a Bachelor of Information Technology in Information Systems at the University of Pretoria in 2025. My capstone project was Timeless Travels, a travel-booking web app.</p>
+        <p><strong>Why I like developing.</strong> I like turning a real problem into something people can actually use. I enjoy tracking a bug through the API, the database and the screen, and the moment a feature finally works from end to end. That’s also why I built a gym equipment app to practise React Native. <!-- EDIT: rewrite this in your own words --></p>
+        <div class="actions">
+          <a class="btn" href="projects.html">See my projects</a>
+          <a class="btn ghost" href="contact.html">Get in touch</a>
+        </div>
+      </div>
+      <div class="photo">
+        <!-- Add your photo as assets/profile.jpg -->
+        <img src="assets/profile.jpg" alt="Photo of Rethabile Ntsane" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'RN'}))">
+      </div>
+    </section>
 
     <section class="section" aria-labelledby="skills">
-      <span class="label" id="skills">What I work with</span>
-      <p class="muted-note">Hover over or tap a tab to see what it’s used for, how popular it is and how confident I am with it.</p>
+      <span class="label" id="skills">02 · What I know</span>
+      <p class="muted-note">Hover over or tap a tab to see what it’s used for, how popular it is, my level, and how I use it in my projects.</p>
       <div id="skills-tabs">
-        <div class="tab-list" role="tablist" aria-label="Skills"></div>
+        <div class="tab-list" role="tablist" aria-label="Languages, frameworks and practices"></div>
         <div class="detail" id="skills-detail" role="tabpanel" aria-live="polite"></div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="learning">
-      <span class="label" id="learning">Currently learning</span>
+      <span class="label" id="learning">03 · Currently learning</span>
       <div id="learning-tabs">
         <div class="tab-list" role="tablist" aria-label="Languages I’m learning"></div>
         <div class="detail" id="learning-detail" role="tabpanel" aria-live="polite"></div>
@@ -51,27 +60,23 @@
     </section>
 
     <section class="section" aria-labelledby="interests">
-      <span class="label" id="interests">Interests</span>
-      <div class="interest-grid">
-        <div class="glass">
-          <h3>ML and LLM development</h3>
-          <p>Exploring how machine-learning models and large language models are built and put to work in real apps. <!-- EDIT: add what you have tried --></p>
-        </div>
-        <div class="glass">
-          <h3>Ethical hacking</h3>
-          <p>Learning how systems get attacked so I can build and test software more securely. <!-- EDIT: add what you have tried --></p>
-        </div>
+      <span class="label" id="interests">04 · Interests</span>
+      <div id="interests-tabs">
+        <div class="tab-list" role="tablist" aria-label="My interests"></div>
+        <div class="detail" id="interests-detail" role="tabpanel" aria-live="polite"></div>
       </div>
-    </section>
-
-    <section class="section" aria-labelledby="now">
-      <span class="label" id="now">Right now</span>
-      <p><!-- EDIT: what you are learning or building at the moment. --></p>
     </section>
   </div>
 </main>
 <footer>
-  <div class="wrap">© 2026 Your Name</div>
+  <div class="wrap footer-grid">
+    <p>© 2026 Rethabile Ntsane</p>
+    <ul class="footer-links">
+      <li><a href="mailto:rethabilentsane22@gmail.com">rethabilentsane22@gmail.com</a></li>
+      <li><a href="tel:+27836909013">083 690 9013</a></li>
+      <li><a href="https://github.com/retha01" target="_blank" rel="noopener">github.com/retha01</a></li>
+    </ul>
+  </div>
 </footer>
 </body>
 </html>
