@@ -66,26 +66,26 @@ const INTERESTS = [
 const LEVELS = { beginner: [1, "Beginner"], mid: [2, "Mid"], pro: [3, "Pro"] };
 
 // Timeless Travels documents (draw.io diagrams and Google Docs).
-// To attach a document to a preview card, set its type to that card's key:
-//   activity, technical-narrative, logical-narrative, ucd, technical-ucd, class, technical-erd, erd, network
-// A card with one document opens it directly. A card with several opens a list. You can also rename the titles.
+// "type" attaches a document to a preview card: activity, technical-narrative, logical-narrative, ucd,
+// technical-ucd, class, technical-erd, erd or network. A card with one document opens it directly,
+// a card with several opens a list. Leave type empty to list a document only under "source documents".
 const TT_LINKS = [
-  { title: "Diagram 1", type: "", url: "https://app.diagrams.net/#G1wklh94KLVivcFyDkufkIGRmYKzeBycaF#%7B%22pageId%22%3A%22f3m_rREs8f01atVZqc95%22%7D" },
-  { title: "Diagram 2", type: "", url: "https://app.diagrams.net/#G17WRjkhJ1OROXykYZwXLXJywQ8OusIsLR#%7B%22pageId%22%3A%22Z7rCNNgsyGtX7ceDhqOI%22%7D" },
-  { title: "Diagram 3", type: "", url: "https://app.diagrams.net/#G1Gz4Pjaq-FbACG9sk8JqhDfHsLgxhrXZr#%7B%22pageId%22%3A%22QSfJ1nT000GuAj_qhCZ-%22%7D" },
-  { title: "Diagram 4", type: "", url: "https://app.diagrams.net/#G1TigGHrFVBcAXxKmsd6qmwgCUI0nwMdD-#%7B%22pageId%22%3A%226zbe8wdXnL3roOKddIRC%22%7D" },
-  { title: "Diagram 5", type: "", url: "https://app.diagrams.net/#G1p4sNWexLQIAjQExZ_MuQ3jil0xfg7GtG#%7B%22pageId%22%3A%22zNgwdIGa0AY75IjQ6EyQ%22%7D" },
-  { title: "Diagram 6", type: "", url: "https://app.diagrams.net/#G1D2JypCY-4eyHaMjzEa5B2dYlpcUIGZba#%7B%22pageId%22%3A%222WZ-tBchlb3lfzMg8ptp%22%7D" },
-  { title: "Diagram 7", type: "", url: "https://app.diagrams.net/#G1y6PqxZHooY2jPslX_97cSxiBKXwgKYLX#%7B%22pageId%22%3A%22TQ1nkdM8kiwyUzHNCdDv%22%7D" },
-  { title: "Template narratives", type: "", url: "https://docs.google.com/document/d/1JzwM5b21qTPc7S5YiU15xu5F5PoRxrYn8c5KElNxUoo/edit?tab=t.0" },
-  { title: "Diagram 9", type: "", url: "https://app.diagrams.net/#G1U8uWPiqJTgsMQLUzIwH7h6T_72ISP-xv#%7B%22pageId%22%3A%22jMW6Sr0voOD2ATbgzma9%22%7D" },
-  { title: "Diagram 10", type: "", url: "https://app.diagrams.net/#G1_wHROzZJOy1mOVKIyIuedcJFaakR29ME#%7B%22pageId%22%3A%22VjQtxs6gq6a7e9_Qg-4Z%22%7D" },
-  { title: "Booking subsystem documentation", type: "", url: "https://docs.google.com/document/d/1eP6YceGQ3cWg3kdc4dHSKCeEKKswQK5t/edit" },
-  { title: "Document 13", type: "", url: "https://docs.google.com/document/d/1yJmBO61j0vMamaWdhin0smXH3XnLoSOO/edit" },
-  { title: "Diagram 14", type: "", url: "https://app.diagrams.net/#G13eXEv_-j8sc5ok9n6eE1RGUHF9kT7IQs#%7B%22pageId%22%3A%22IVZrldYsp30tvIAd3zkg%22%7D" },
-  { title: "Diagram 15", type: "", url: "https://app.diagrams.net/#G1j_Tkp-eOrD37mVWl9vwCHeJ9RP8bvSAj#%7B%22pageId%22%3A%22js-Nj055QfkMvIBA_fm2%22%7D" },
-  { title: "Document 16", type: "", url: "https://docs.google.com/document/d/1Ro9Ajw6XeND-fpQeaKuLRapCUDDt2zddkcSblAR-w3k/edit?tab=t.0" },
-  { title: "Document 17", type: "", url: "https://docs.google.com/document/d/1oReT2UHQPVgguJiP29zm-R_kdeSOVO2W/edit" },
+  { title: "Context and primitive diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1wklh94KLVivcFyDkufkIGRmYKzeBycaF#%7B%22pageId%22%3A%22f3m_rREs8f01atVZqc95%22%7D" },
+  { title: "State diagram", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G17WRjkhJ1OROXykYZwXLXJywQ8OusIsLR#%7B%22pageId%22%3A%22Z7rCNNgsyGtX7ceDhqOI%22%7D" },
+  { title: "Sequence diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1Gz4Pjaq-FbACG9sk8JqhDfHsLgxhrXZr#%7B%22pageId%22%3A%22QSfJ1nT000GuAj_qhCZ-%22%7D" },
+  { title: "Dependency diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1TigGHrFVBcAXxKmsd6qmwgCUI0nwMdD-#%7B%22pageId%22%3A%226zbe8wdXnL3roOKddIRC%22%7D" },
+  { title: "Functional decomposition diagram", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1p4sNWexLQIAjQExZ_MuQ3jil0xfg7GtG#%7B%22pageId%22%3A%22zNgwdIGa0AY75IjQ6EyQ%22%7D" },
+  { title: "CRUD primitive diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1D2JypCY-4eyHaMjzEa5B2dYlpcUIGZba#%7B%22pageId%22%3A%222WZ-tBchlb3lfzMg8ptp%22%7D" },
+  { title: "CRUD sequence diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1y6PqxZHooY2jPslX_97cSxiBKXwgKYLX#%7B%22pageId%22%3A%22TQ1nkdM8kiwyUzHNCdDv%22%7D" },
+  { title: "Technical narratives", group: "Narratives", type: "technical-narrative", url: "https://docs.google.com/document/d/1JzwM5b21qTPc7S5YiU15xu5F5PoRxrYn8c5KElNxUoo/edit?tab=t.0" },
+  { title: "Booking subsystem: primitive diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1U8uWPiqJTgsMQLUzIwH7h6T_72ISP-xv#%7B%22pageId%22%3A%22jMW6Sr0voOD2ATbgzma9%22%7D" },
+  { title: "Booking subsystem: sequence diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1_wHROzZJOy1mOVKIyIuedcJFaakR29ME#%7B%22pageId%22%3A%22VjQtxs6gq6a7e9_Qg-4Z%22%7D" },
+  { title: "Booking subsystem documentation", group: "Narratives", type: "logical-narrative", url: "https://docs.google.com/document/d/1eP6YceGQ3cWg3kdc4dHSKCeEKKswQK5t/edit" },
+  { title: "Customer subsystem: CRUD narratives", group: "Narratives", type: "logical-narrative", url: "https://docs.google.com/document/d/1yJmBO61j0vMamaWdhin0smXH3XnLoSOO/edit" },
+  { title: "Employee subsystem: primitive diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G13eXEv_-j8sc5ok9n6eE1RGUHF9kT7IQs#%7B%22pageId%22%3A%22IVZrldYsp30tvIAd3zkg%22%7D" },
+  { title: "Employee subsystem: sequence diagrams", group: "System diagrams", type: "", url: "https://app.diagrams.net/#G1j_Tkp-eOrD37mVWl9vwCHeJ9RP8bvSAj#%7B%22pageId%22%3A%22js-Nj055QfkMvIBA_fm2%22%7D" },
+  { title: "Employee subsystem: technical narratives", group: "Narratives", type: "technical-narrative", url: "https://docs.google.com/document/d/1Ro9Ajw6XeND-fpQeaKuLRapCUDDt2zddkcSblAR-w3k/edit?tab=t.0" },
+  { title: "Technical narratives (part 2)", group: "Narratives", type: "technical-narrative", url: "https://docs.google.com/document/d/1oReT2UHQPVgguJiP29zm-R_kdeSOVO2W/edit" },
 ];
 
 // Previews for the Technical documentation tab. Image names must match the files in assets/images exactly (lower case).
@@ -219,7 +219,10 @@ function initDocs() {
   }).join("");
   grid.querySelectorAll("button.doc").forEach((b) => b.addEventListener("click", () => openDialog(DOCS[b.dataset.i])));
   const lib = document.getElementById("doc-library");
-  if (lib) lib.innerHTML = linkRows(TT_LINKS);
+  if (lib) {
+    lib.innerHTML = [...new Set(TT_LINKS.map((l) => l.group))].map((g) =>
+      `<h3 class="lib-group">${g}</h3><ul class="links">${linkRows(TT_LINKS.filter((l) => l.group === g))}</ul>`).join("");
+  }
 }
 
 // ---------- Glow that follows the mouse ----------
