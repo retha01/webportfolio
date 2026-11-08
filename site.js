@@ -65,113 +65,78 @@ const INTERESTS = [
 
 const LEVELS = { beginner: [1, "Beginner"], mid: [2, "Mid"], pro: [3, "Pro"] };
 
-// Previews for the Technical documentation tab. File names must match the files in assets/images exactly (lower case).
-const DOCS = [
-  { t: "Activity diagram", file: "activity diagram.png", d: "Shows the flow of actions and decisions in a process, step by step." },
-  { t: "Technical narrative", file: "technical narrative.jpg", d: "Explains how a system is built: its components, technologies and how they work together." },
-  { t: "Logical narrative", file: "logical narrative.jpg", d: "Describes what a system does and its business rules, in plain language and without technology details." },
-  { t: "Use case diagram (UCD)", file: "ucd.png", d: "Shows who uses the system and what each user can do." },
-  { t: "Technical UCD", file: "technical ucd.png", d: "A use case diagram with added technical detail, such as system components and interfaces." },
-  { t: "Class diagram", file: "class diagram.png", d: "Shows the classes in a system, with their attributes, methods and relationships." },
-  { t: "Technical ERD", file: "technical erd.png", d: "The detailed database design: tables, data types, keys and constraints." },
-  { t: "ERD", file: "erd.jpg", d: "Shows the main data entities in a system and how they relate to each other." },
-  { t: "Network design and architecture", file: "network design and architecture.png", d: "Shows servers, networks and how the parts of a system connect and communicate." },
+// Timeless Travels documents (draw.io diagrams and Google Docs).
+// To attach a document to a preview card, set its type to that card's key:
+//   activity, technical-narrative, logical-narrative, ucd, technical-ucd, class, technical-erd, erd, network
+// A card with one document opens it directly. A card with several opens a list. You can also rename the titles.
+const TT_LINKS = [
+  { title: "Diagram 1", type: "", url: "https://app.diagrams.net/#G1wklh94KLVivcFyDkufkIGRmYKzeBycaF#%7B%22pageId%22%3A%22f3m_rREs8f01atVZqc95%22%7D" },
+  { title: "Diagram 2", type: "", url: "https://app.diagrams.net/#G17WRjkhJ1OROXykYZwXLXJywQ8OusIsLR#%7B%22pageId%22%3A%22Z7rCNNgsyGtX7ceDhqOI%22%7D" },
+  { title: "Diagram 3", type: "", url: "https://app.diagrams.net/#G1Gz4Pjaq-FbACG9sk8JqhDfHsLgxhrXZr#%7B%22pageId%22%3A%22QSfJ1nT000GuAj_qhCZ-%22%7D" },
+  { title: "Diagram 4", type: "", url: "https://app.diagrams.net/#G1TigGHrFVBcAXxKmsd6qmwgCUI0nwMdD-#%7B%22pageId%22%3A%226zbe8wdXnL3roOKddIRC%22%7D" },
+  { title: "Diagram 5", type: "", url: "https://app.diagrams.net/#G1p4sNWexLQIAjQExZ_MuQ3jil0xfg7GtG#%7B%22pageId%22%3A%22zNgwdIGa0AY75IjQ6EyQ%22%7D" },
+  { title: "Diagram 6", type: "", url: "https://app.diagrams.net/#G1D2JypCY-4eyHaMjzEa5B2dYlpcUIGZba#%7B%22pageId%22%3A%222WZ-tBchlb3lfzMg8ptp%22%7D" },
+  { title: "Diagram 7", type: "", url: "https://app.diagrams.net/#G1y6PqxZHooY2jPslX_97cSxiBKXwgKYLX#%7B%22pageId%22%3A%22TQ1nkdM8kiwyUzHNCdDv%22%7D" },
+  { title: "Template narratives", type: "", url: "https://docs.google.com/document/d/1JzwM5b21qTPc7S5YiU15xu5F5PoRxrYn8c5KElNxUoo/edit?tab=t.0" },
+  { title: "Diagram 9", type: "", url: "https://app.diagrams.net/#G1U8uWPiqJTgsMQLUzIwH7h6T_72ISP-xv#%7B%22pageId%22%3A%22jMW6Sr0voOD2ATbgzma9%22%7D" },
+  { title: "Diagram 10", type: "", url: "https://app.diagrams.net/#G1_wHROzZJOy1mOVKIyIuedcJFaakR29ME#%7B%22pageId%22%3A%22VjQtxs6gq6a7e9_Qg-4Z%22%7D" },
+  { title: "Booking subsystem documentation", type: "", url: "https://docs.google.com/document/d/1eP6YceGQ3cWg3kdc4dHSKCeEKKswQK5t/edit" },
+  { title: "Document 13", type: "", url: "https://docs.google.com/document/d/1yJmBO61j0vMamaWdhin0smXH3XnLoSOO/edit" },
+  { title: "Diagram 14", type: "", url: "https://app.diagrams.net/#G13eXEv_-j8sc5ok9n6eE1RGUHF9kT7IQs#%7B%22pageId%22%3A%22IVZrldYsp30tvIAd3zkg%22%7D" },
+  { title: "Diagram 15", type: "", url: "https://app.diagrams.net/#G1j_Tkp-eOrD37mVWl9vwCHeJ9RP8bvSAj#%7B%22pageId%22%3A%22js-Nj055QfkMvIBA_fm2%22%7D" },
+  { title: "Document 16", type: "", url: "https://docs.google.com/document/d/1Ro9Ajw6XeND-fpQeaKuLRapCUDDt2zddkcSblAR-w3k/edit?tab=t.0" },
+  { title: "Document 17", type: "", url: "https://docs.google.com/document/d/1oReT2UHQPVgguJiP29zm-R_kdeSOVO2W/edit" },
 ];
 
-// ---------- Glass tabs with a detail panel ----------
-const meter = (on, max) => Array.from({ length: max }, (_, i) => `<i class="${i < on ? "on" : ""}"></i>`).join("");
+// Previews for the Technical documentation tab. Image names must match the files in assets/images exactly (lower case).
+const DOCS = [
+  { key: "activity", t: "Activity diagram", file: "activity diagram.png", d: "Shows the flow of actions and decisions in a process, step by step." },
+  { key: "technical-narrative", t: "Technical narrative", file: "technical narrative.jpg", d: "Explains how a system is built: its components, technologies and how they work together." },
+  { key: "logical-narrative", t: "Logical narrative", file: "logical narrative.jpg", d: "Describes what a system does and its business rules, in plain language and without technology details." },
+  { key: "ucd", t: "Use case diagram (UCD)", file: "ucd.png", d: "Shows who uses the system and what each user can do." },
+  { key: "technical-ucd", t: "Technical UCD", file: "technical ucd.png", d: "A use case diagram with added technical detail, such as system components and interfaces." },
+  { key: "class", t: "Class diagram", file: "class diagram.png", d: "Shows the classes in a system, with their attributes, methods and relationships." },
+  { key: "technical-erd", t: "Technical ERD", file: "technical erd.png", d: "The detailed database design: tables, data types, keys and constraints." },
+  { key: "erd", t: "ERD", file: "erd.jpg", d: "Shows the main data entities in a system and how they relate to each other." },
+  { key: "network", t: "Network design and architecture", file: "network design and architecture.png", d: "Shows servers, networks and how the parts of a system connect and communicate." },
+];
 
-function initTabs(rootId, items) {
-  const root = document.getElementById(rootId);
-  if (!root) return;
-  const list = root.querySelector(".tab-list");
-  const panel = root.querySelector(".detail");
-  let html = "", last = "";
-  items.forEach((s) => {
-    if (s.group && s.group !== last) {
-      if (last) html += "</div>";
-      html += `<div class="tab-group" role="presentation"><span class="group-label" aria-hidden="true">${s.group}</span>`;
-      last = s.group;
-    }
-    html += `<button type="button" role="tab" class="tab" id="${rootId}-${s.id}" data-id="${s.id}" aria-selected="false" aria-controls="${panel.id}" tabindex="-1">${s.name}</button>`;
-  });
-  list.innerHTML = html + (last ? "</div>" : "");
-  const tabs = [...list.querySelectorAll(".tab")];
-
-  function show(id) {
-    const s = items.find((x) => x.id === id);
-    tabs.forEach((t) => {
-      const on = t.dataset.id === id;
-      t.setAttribute("aria-selected", on);
-      t.tabIndex = on ? 0 : -1;
-    });
-    panel.setAttribute("aria-labelledby", `${rootId}-${id}`);
-    const stats = s.level ? `<div class="stats">
-        <div><span class="label">Popularity</span><div class="meter" aria-hidden="true">${meter(s.pop, 5)}</div><p>${s.popText}</p></div>
-        <div><span class="label">My level</span><div class="meter" aria-hidden="true">${meter(LEVELS[s.level][0], 3)}</div><p><strong>${LEVELS[s.level][1]}</strong></p></div>
-      </div>` : "";
-    panel.innerHTML = `<h3>${s.name}</h3>
-      <p>${s.use}</p>${stats}
-      <div class="proj"><span class="label">${s.projLabel || "In my projects"}</span><p>${s.proj}</p></div>
-      ${s.link ? `<p class="detail-link"><a href="${s.link.href}">${s.link.text} →</a></p>` : ""}`;
-  }
-
-  tabs.forEach((t, i) => {
-    ["mouseenter", "click", "focus"].forEach((ev) => t.addEventListener(ev, () => show(t.dataset.id)));
-    t.addEventListener("keydown", (e) => {
-      const move = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
-      if (move === undefined) return;
-      e.preventDefault();
-      tabs[(move + tabs.length) % tabs.length].focus();
-    });
-  });
-  show(items[0].id);
-}
-
-// ---------- Page tabs on the Projects page ----------
-function initPageTabs() {
-  const tabs = [...document.querySelectorAll("[data-page-tab]")];
-  if (!tabs.length) return;
-  const panels = [...document.querySelectorAll("[data-panel]")];
-  function select(name, updateHash) {
-    tabs.forEach((t) => {
-      const on = t.dataset.pageTab === name;
-      t.setAttribute("aria-selected", on);
-      t.tabIndex = on ? 0 : -1;
-    });
-    panels.forEach((p) => (p.hidden = p.dataset.panel !== name));
-    if (updateHash && history.replaceState) history.replaceState(null, "", "#" + name);
-  }
-  tabs.forEach((t, i) => {
-    t.addEventListener("click", () => select(t.dataset.pageTab, true));
-    t.addEventListener("keydown", (e) => {
-      const move = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
-      if (move === undefined) return;
-      e.preventDefault();
-      const next = tabs[(move + tabs.length) % tabs.length];
-      next.focus();
-      select(next.dataset.pageTab, true);
-    });
-  });
-  const wanted = location.hash.slice(1);
-  select(tabs.some((t) => t.dataset.pageTab === wanted) ? wanted : tabs[0].dataset.pageTab, false);
-  window.addEventListener("hashchange", () => {
-    const h = location.hash.slice(1);
-    if (tabs.some((t) => t.dataset.pageTab === h)) select(h, false);
-  });
-}
+const kindOf = (l) => (l.url.includes("docs.google.com") ? "Google Doc" : "draw.io diagram");
+const linkRows = (list) => list.map((l) => `<li><a href="${l.url}" target="_blank" rel="noopener"><span>${kindOf(l)}</span><span>${l.title}</span></a></li>`).join("");
 
 // ---------- Document previews ----------
+function openDialog(doc) {
+  let dlg = document.getElementById("doc-dialog");
+  if (!dlg) {
+    dlg = document.createElement("dialog");
+    dlg.id = "doc-dialog";
+    dlg.className = "doc-dialog";
+    document.body.append(dlg);
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+  }
+  dlg.innerHTML = `<h3>${doc.t}</h3><ul class="links">${linkRows(TT_LINKS.filter((l) => l.type === doc.key))}</ul>
+    <button type="button" class="btn ghost" autofocus>Close</button>`;
+  dlg.querySelector("button").addEventListener("click", () => dlg.close());
+  dlg.showModal();
+}
+
 function initDocs() {
   const grid = document.getElementById("doc-grid");
   if (!grid) return;
-  grid.innerHTML = DOCS.map((doc) => {
-    const file = encodeURI("assets/images/" + doc.file);
-    return `<a class="doc" href="${file}" target="_blank" rel="noopener">
-      <div class="doc-preview"><img src="${file}" alt="Preview of ${doc.t}" loading="lazy"
+  grid.innerHTML = DOCS.map((doc, i) => {
+    const img = encodeURI("assets/images/" + doc.file);
+    const links = TT_LINKS.filter((l) => l.type === doc.key);
+    const inner = `<div class="doc-preview"><img src="${img}" alt="Preview of ${doc.t}" loading="lazy"
         onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'missing',textContent:'Add assets/images/${doc.file}'}))"></div>
-      <h3>${doc.t}</h3><p>${doc.d}</p></a>`;
+      <h3>${doc.t}</h3><p>${doc.d}</p>
+      ${links.length ? `<span class="doc-open">${links.length > 1 ? links.length + " documents" : "Open document"} ↗</span>` : ""}`;
+    if (links.length === 1) return `<a class="doc" href="${links[0].url}" target="_blank" rel="noopener">${inner}</a>`;
+    if (links.length > 1) return `<button type="button" class="doc" data-i="${i}">${inner}</button>`;
+    return `<a class="doc" href="${img}" target="_blank" rel="noopener">${inner}</a>`; // no document linked yet: opens the image
   }).join("");
+  grid.querySelectorAll("button.doc").forEach((b) => b.addEventListener("click", () => openDialog(DOCS[b.dataset.i])));
+  const lib = document.getElementById("doc-library");
+  if (lib) lib.innerHTML = linkRows(TT_LINKS);
 }
 
 // ---------- Glow that follows the mouse ----------
