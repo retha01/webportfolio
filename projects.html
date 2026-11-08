@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<title>Projects · Your Name</title>
+<meta name="description" content="Projects by Your Name, with the problem each one solves and the tools used.">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">&lt;Your Name /&gt;</a>
+    <nav aria-label="Main">
+      <a href="index.html">About</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <span class="label">Projects</span>
+    <h1>Things I’ve <em>built</em>.</h1>
+    <p class="lead">Each project lists the problem it tackles, why I picked the languages, and how it solves the problem.</p>
+
+    <div style="margin-top: 40px">
+
+      <!-- ===== PROJECT 1 (edit the text and the GitHub link) ===== -->
+      <article class="card">
+        <div class="card-head">
+          <h2>Pet Booking System</h2>
+          <a class="btn" href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+        <ul class="chips"><li>C#</li><li>ASP.NET Core</li><li>SQL Server</li><li>React</li><li>JWT</li></ul>
+
+        <h3>The problem</h3>
+        <p>Pet owners and pet-care providers often arrange bookings through scattered phone calls and messages, which leads to double bookings and no single record. They need one secure place where owners can create an account and manage their bookings.</p>
+
+        <h3>Why these languages</h3>
+        <p>C# with ASP.NET Core gives a fast, strongly typed API with built-in support for JWT authentication. SQL Server suits the data well, because users, pets and bookings are related and need rules such as unique emails. React keeps the interface simple to build, with the sign-in, sign-up and signed-in views driven by one piece of state.</p>
+
+        <h3>How it solves it</h3>
+        <p>Users sign up and log in through a React front end. The C# API hashes passwords with bcrypt, checks them against SQL Server, and returns a short-lived JWT. Protected endpoints accept only requests with a valid token, which is the base the booking features are being built on.</p>
+      </article>
+
+      <!-- ===== PROJECT 2: copy the whole <article> block above and paste it here ===== -->
+
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">© 2026 Your Name</div>
+</footer>
+</body>
+</html>
