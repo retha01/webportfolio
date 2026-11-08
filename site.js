@@ -101,6 +101,89 @@ const DOCS = [
   { key: "network", t: "Network design and architecture", file: "network design and architecture.png", d: "Shows servers, networks and how the parts of a system connect and communicate." },
 ];
 
+// ---------- Glass tabs with a detail panel ----------
+const meter = (on, max) => Array.from({ length: max }, (_, i) => `<i class="${i < on ? "on" : ""}"></i>`).join("");
+
+function initTabs(rootId, items) {
+  const root = document.getElementById(rootId);
+  if (!root) return;
+  const list = root.querySelector(".tab-list");
+  const panel = root.querySelector(".detail");
+  let html = "", last = "";
+  items.forEach((s) => {
+    if (s.group && s.group !== last) {
+      if (last) html += "</div>";
+      html += `<div class="tab-group" role="presentation"><span class="group-label" aria-hidden="true">${s.group}</span>`;
+      last = s.group;
+    }
+    html += `<button type="button" role="tab" class="tab" id="${rootId}-${s.id}" data-id="${s.id}" aria-selected="false" aria-controls="${panel.id}" tabindex="-1">${s.name}</button>`;
+  });
+  list.innerHTML = html + (last ? "</div>" : "");
+  const tabs = [...list.querySelectorAll(".tab")];
+
+  function show(id) {
+    const s = items.find((x) => x.id === id);
+    tabs.forEach((t) => {
+      const on = t.dataset.id === id;
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+    });
+    panel.setAttribute("aria-labelledby", `${rootId}-${id}`);
+    const stats = s.level ? `<div class="stats">
+        <div><span class="label">Popularity</span><div class="meter" aria-hidden="true">${meter(s.pop, 5)}</div><p>${s.popText}</p></div>
+        <div><span class="label">My level</span><div class="meter" aria-hidden="true">${meter(LEVELS[s.level][0], 3)}</div><p><strong>${LEVELS[s.level][1]}</strong></p></div>
+      </div>` : "";
+    panel.innerHTML = `<h3>${s.name}</h3>
+      <p>${s.use}</p>${stats}
+      <div class="proj"><span class="label">${s.projLabel || "In my projects"}</span><p>${s.proj}</p></div>
+      ${s.link ? `<p class="detail-link"><a href="${s.link.href}">${s.link.text} →</a></p>` : ""}`;
+  }
+
+  tabs.forEach((t, i) => {
+    ["mouseenter", "click", "focus"].forEach((ev) => t.addEventListener(ev, () => show(t.dataset.id)));
+    t.addEventListener("keydown", (e) => {
+      const move = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (move === undefined) return;
+      e.preventDefault();
+      tabs[(move + tabs.length) % tabs.length].focus();
+    });
+  });
+  show(items[0].id);
+}
+
+// ---------- Page tabs on the Projects page ----------
+function initPageTabs() {
+  const tabs = [...document.querySelectorAll("[data-page-tab]")];
+  if (!tabs.length) return;
+  const panels = [...document.querySelectorAll("[data-panel]")];
+  function select(name, updateHash) {
+    tabs.forEach((t) => {
+      const on = t.dataset.pageTab === name;
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach((p) => (p.hidden = p.dataset.panel !== name));
+    if (updateHash) { try { history.replaceState(null, "", "#" + name); } catch (e) { /* some browsers block this on local files */ } }
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t.dataset.pageTab, true));
+    t.addEventListener("keydown", (e) => {
+      const move = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (move === undefined) return;
+      e.preventDefault();
+      const next = tabs[(move + tabs.length) % tabs.length];
+      next.focus();
+      select(next.dataset.pageTab, true);
+    });
+  });
+  const wanted = location.hash.slice(1);
+  select(tabs.some((t) => t.dataset.pageTab === wanted) ? wanted : tabs[0].dataset.pageTab, false);
+  window.addEventListener("hashchange", () => {
+    const h = location.hash.slice(1);
+    if (tabs.some((t) => t.dataset.pageTab === h)) select(h, false);
+  });
+}
+
 const kindOf = (l) => (l.url.includes("docs.google.com") ? "Google Doc" : "draw.io diagram");
 const linkRows = (list) => list.map((l) => `<li><a href="${l.url}" target="_blank" rel="noopener"><span>${kindOf(l)}</span><span>${l.title}</span></a></li>`).join("");
 
