@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="site.js" defer></script>
 <title>Projects · Your Name</title>
 <meta name="description" content="Projects by Your Name, with the problem each one solves and the tools used.">
 </head>
@@ -25,9 +26,15 @@
   <div class="wrap">
     <span class="label">Projects</span>
     <h1>Things I’ve <em>built</em>.</h1>
-    <p class="lead">Each project lists the problem it tackles, why I picked the languages, and how it solves the problem.</p>
+    <p class="lead">Apps, design work and documentation samples. Pick a tab to explore.</p>
 
-    <div style="margin-top: 40px">
+    <div class="page-tabs" role="tablist" aria-label="Project types">
+      <button type="button" role="tab" class="tab" id="pt-apps" data-page-tab="apps" aria-controls="panel-apps" aria-selected="true">Apps</button>
+      <button type="button" role="tab" class="tab" id="pt-uiux" data-page-tab="uiux" aria-controls="panel-uiux" aria-selected="false" tabindex="-1">UI/UX design</button>
+      <button type="button" role="tab" class="tab" id="pt-docs" data-page-tab="docs" aria-controls="panel-docs" aria-selected="false" tabindex="-1">Technical documentation</button>
+    </div>
+
+    <section id="panel-apps" role="tabpanel" aria-labelledby="pt-apps" data-panel="apps">
 
       <!-- ===== PROJECT 1 (edit the text and the GitHub link) ===== -->
       <article class="card">
@@ -49,7 +56,26 @@
 
       <!-- ===== PROJECT 2: copy the whole <article> block above and paste it here ===== -->
 
-    </div>
+    </section>
+
+    <section id="panel-uiux" role="tabpanel" aria-labelledby="pt-uiux" data-panel="uiux" hidden>
+      <p class="lead">Designs I’ve completed or attempted, from first sketches to prototypes.</p>
+      <!-- ===== DESIGN 1 (edit the text and link; copy the <article> block for more) ===== -->
+      <article class="card">
+        <div class="card-head">
+          <h2>Design project name</h2>
+          <a class="btn" href="https://www.figma.com/YOUR-LINK" target="_blank" rel="noopener">View design ↗</a>
+        </div>
+        <ul class="chips"><li>Wireframes</li><li>Prototype</li></ul>
+        <p><!-- EDIT: one or two sentences: what you designed, who it’s for, and whether it’s finished or an attempt. --></p>
+      </article>
+    </section>
+
+    <section id="panel-docs" role="tabpanel" aria-labelledby="pt-docs" data-panel="docs" hidden>
+      <p class="lead">Samples of the technical documentation I write. Select a preview to open the full document.</p>
+      <div class="doc-grid" id="doc-grid"></div>
+    </section>
+
   </div>
 </main>
 <footer>

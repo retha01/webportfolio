@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="site.js" defer></script>
 <title>Your Name · Developer</title>
 <meta name="description" content="Portfolio of Your Name, a software developer.">
 </head>
@@ -33,11 +34,34 @@
     </div>
 
     <section class="section" aria-labelledby="skills">
-      <span class="label" id="skills">Tools I use</span>
-      <ul class="chips">
-        <li>C#</li><li>ASP.NET Core</li><li>SQL Server</li><li>React</li><li>JavaScript</li><li>JWT auth</li><li>Git &amp; GitHub</li>
-        <!-- EDIT: add or remove tools -->
-      </ul>
+      <span class="label" id="skills">What I work with</span>
+      <p class="muted-note">Hover over or tap a tab to see what it’s used for, how popular it is and how confident I am with it.</p>
+      <div id="skills-tabs">
+        <div class="tab-list" role="tablist" aria-label="Skills"></div>
+        <div class="detail" id="skills-detail" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="learning">
+      <span class="label" id="learning">Currently learning</span>
+      <div id="learning-tabs">
+        <div class="tab-list" role="tablist" aria-label="Languages I’m learning"></div>
+        <div class="detail" id="learning-detail" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="interests">
+      <span class="label" id="interests">Interests</span>
+      <div class="interest-grid">
+        <div class="glass">
+          <h3>ML and LLM development</h3>
+          <p>Exploring how machine-learning models and large language models are built and put to work in real apps. <!-- EDIT: add what you have tried --></p>
+        </div>
+        <div class="glass">
+          <h3>Ethical hacking</h3>
+          <p>Learning how systems get attacked so I can build and test software more securely. <!-- EDIT: add what you have tried --></p>
+        </div>
+      </div>
     </section>
 
     <section class="section" aria-labelledby="now">
